@@ -1,4 +1,11 @@
 #!/usr/bin/env rake
+require 'rake/testtask'
+
+Rake::TestTask.new do |t|
+  t.libs.push "lib"
+  t.test_files = FileList['test/**/*_spec.rb']
+  t.verbose = true
+end
 
 desc "Runs foodcritic linter"
 task :foodcritic do
@@ -9,4 +16,4 @@ task :foodcritic do
   end
 end
 
-task :default => 'foodcritic'
+task :default => [ 'test', 'foodcritic' ]
