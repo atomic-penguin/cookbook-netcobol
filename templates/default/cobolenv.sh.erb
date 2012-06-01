@@ -1,0 +1,32 @@
+#!/bin/bash
+# Fujitsu NetCOBOL Profile script
+                                                                                                                                                                                                                                             
+if [ ${PATH:-""} = "" ] ; then                                                                                                                                                                                                               
+        PATH=<%= node['netcobol']['path'] %>/bin:/usr/bin:/bin; export PATH                                                                                                                                                                                     
+else                                                                                                                                                                                                                                         
+        PATH=<%= node['netcobol']['path'] %>/bin:${PATH}; export PATH                                                                                                                                                                                           
+fi                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                             
+if [ ${LD_LIBRARY_PATH:-""} = "" ] ; then                                                                                                                                                                                                    
+        LD_LIBRARY_PATH=<%= node['netcobol']['path'] %>/COBOLRT/lib:<%= node['netcobol']['path'] %>/COBOL/lib:<%= node['netcobol']['path'] %>/lib; export LD_LIBRARY_PATH                                                                                                                             
+else                                                                                                                                                                                                                                         
+        LD_LIBRARY_PATH=<%= node['netcobol']['path'] %>/COBOLRT/lib:<%= node['netcobol']['path'] %>/COBOL/lib:<%= node['netcobol']['path'] %>/lib:${LD_LIBRARY_PATH}; export LD_LIBRARY_PATH                                                                                                          
+fi                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                             
+if [ ${NLSPATH:-""} = "" ] ; then                                                                                                                                                                                                            
+        NLSPATH=<%= node['netcobol']['path'] %>/lib/nls/%L/%N.cat:<%= node['netcobol']['path'] %>/lib/nls/C/%N.cat; export NLSPATH                                                                                                                                                 
+else                                                                                                                                                                                                                                         
+        NLSPATH=<%= node['netcobol']['path'] %>/lib/nls/%L/%N.cat:<%= node['netcobol']['path'] %>/lib/nls/C/%N.cat:${NLSPATH}; export NLSPATH                                                                                                                                      
+fi
+
+if [ `whoami` = 'banner' ] ; then
+        #case "$-" in
+        #*i*) echo Configured for NetCOBOL compiling;;
+        #*);;
+        #esac
+        if [ ${COBCOPY:-""} = "" ] ; then
+                COBCOPY=<%= node['netcobol']['path'] %>/copy:.; export COBCOPY
+        else
+                COBCOPY=<%= node['netcobol']['path'] %>/copy:.:${COBCOPY}; export COBCOPY
+        fi
+fi
