@@ -1,5 +1,2 @@
-# license templates
-host-*/license.txt
-
-# metadata
+chefignore
 metadata.json

@@ -19,11 +19,69 @@
 
 if node['kernel']['machine'] =~ /^(x|i[3456])86$/i
   default['netcobol']['packages'] = %w{ FJSVcbl FJSVcbr }
-  default['netcobol']['path'] = "/opt/FJSVcbl"
+  default['netcobol']['paths'] = %w{ /opt/FJSVcbl }
+  default['netcobol']['libpaths'] = [
+    "#{node['netcobol']['paths'].first}/COBOLRT/lib",
+    "#{node['netcobol']['paths'].first}/COBOL/lib",
+    "#{node['netcobol']['paths'].first}/lib"
+  ]
+  default['netcobol']['manpaths'] = Array.new
+  default['netcobol']['nlspaths'] = [
+    "#{node['netcobol']['paths'].first}/lib/nls/%L/%N.cat",
+    "#{node['netcobol']['paths'].first}/lib/nls/C/%N.cat"
+  ]
+  default['netcobol']['copypaths'] = [
+    "#{node['netcobol']['paths'].first}/copy",
+    "."
+  ]
 elsif node['kernel']['machine'] =~ /^(x86_|amd)64$/i
-  default['netcobol']['packages'] = %w{ FJSVXcbl FJSVXcbr }
-  default['netcobol']['path'] = "/opt/FJSVcbl64"
+  default['netcobol']['packages'] = %w{
+    FJSVXcbl
+    FJSVXcbr
+    FJSVXcbre
+    FJSVXcblf
+    FJSVXcbrf
+    FJSVXmeft
+    FJSVXbsrt
+    FJSVXrds
+  }
+  default['netcobol']['paths'] = %w{ /opt/FJSVcbl64 /opt/FJSVXbsrt }
+  default['netcobol']['libpaths'] = %w{
+    /opt/FJSVcbl64/lib
+    /opt/FJSVXbsrt/lib
+    /opt/FJSVXmeft/lib
+  }
+  default['netcobol']['manpaths'] = %w{ 
+    /opt/FJSVcbl64/man/%L
+    /opt/FJSVcbl64/man
+    /opt/FJSVXbsrt/man/%L
+    /opt/FJSVXbsrt/man
+  }
+  default['netcobol']['nlspaths'] = %w{
+    /opt/FJSVcbl64/lib/nls/%L/%N.cat
+    /opt/FJSVcbl64/lib/nls/C/%N.cat
+    /opt/FJSVXbsrt/lib/nls/%L/%N.cat
+    /opt/FJSVXbsrt/lib/nls/C/%N.cat
+  }
+  default['netcobol']['copypaths'] = [
+    "#{node['netcobol']['paths'].first}/copy",
+    "."  
+  ]
 else
   default['netcobol']['packages'] = %w{ FJSVcbl FJSVcbr }
-  default['netcobol']['path'] = "/opt/FJSVcbl"
+  default['netcobol']['paths'] = %w{ /opt/FJSVcbl }
+  default['netcobol']['libpaths'] = [
+    "#{node['netcobol']['paths'].first}/COBOLRT/lib",
+    "#{node['netcobol']['paths'].first}/COBOL/lib",
+    "#{node['netcobol']['paths'].first}/lib"
+  ]
+  default['netcobol']['manpaths'] = Array.new
+  default['netcobol']['nlspaths'] = [
+    "#{node['netcobol']['paths'].first}/lib/nls/%L/%N.cat",
+    "#{node['netcobol']['paths'].first}/lib/nls/C/%N.cat"
+  ]
+  default['netcobol']['copypaths'] = [
+    "#{node['netcobol']['paths'].first}/copy",
+    "."
+  ]
 end

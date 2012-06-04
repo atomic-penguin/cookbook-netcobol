@@ -41,12 +41,27 @@ describe 'Netcobol::Attributes::Default' do
       }
     end
 
-    it "sets the netcobol.packages to" do
-      @node[attr_ns]['packages'].must_equal %w{ FJSVXcbl FJSVXcbr }
+    it "sets the netcobol.packages" do
+      @node[attr_ns]['packages'].must_equal %w{ FJSVXcbl FJSVXcbr FJSVXcbre FJSVXcblf FJSVXcbrf FJSVXmeft FJSVXbsrt FJSVXrds } 
     end
 
-    it "sets the netcobol.path to" do
-      @node[attr_ns]['path'].must_equal "/opt/FJSVcbl64"
+    it "sets the netcobol.paths" do
+      @node[attr_ns]['paths'].must_equal %w{ /opt/FJSVcbl64 /opt/FJSVXbsrt }
+    end
+
+    it "set the netcobol.libpaths" do
+      @node[attr_ns]['libpaths'].must_equal %w{
+        /opt/FJSVcbl64/lib
+        /opt/FJSVXbsrt/lib
+        /opt/FJSVXmeft/lib    
+      }
+    end
+
+    it "sets the netcobol.copypaths" do
+      @node[attr_ns]['copypaths'].must_equal %w{ 
+        /opt/FJSVcbl64/copy
+        .  
+      }
     end
   end
 
@@ -60,12 +75,28 @@ describe 'Netcobol::Attributes::Default' do
       }
     end
 
-    it "sets the netcobol.packages to" do
+    it "sets the netcobol.packages" do
       @node[attr_ns]['packages'].must_equal %w{ FJSVcbl FJSVcbr }
     end
 
-    it "sets the netcobol.path to" do
-      @node[attr_ns]['path'].must_equal "/opt/FJSVcbl"
+    it "sets the netcobol.paths" do
+      @node[attr_ns]['paths'].must_equal %w{ /opt/FJSVcbl }
     end
+
+    it "set the netcobol.libpaths" do 
+      @node[attr_ns]['libpaths'].must_equal %w{
+        /opt/FJSVcbl/COBOLRT/lib
+        /opt/FJSVcbl/COBOL/lib
+        /opt/FJSVcbl/lib
+      }
+    end
+
+    it "sets the netcobol.copypaths" do
+      @node[attr_ns]['copypaths'].must_equal %w{ 
+        /opt/FJSVcbl/copy
+        .  
+      }
+    end
+
   end
 end

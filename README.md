@@ -7,12 +7,28 @@ Further proof that you can do enterprise-y things with Chef.
 
 ## Requirements
 
-There needs to be a FJSVcbl and FJSVcbr (i386) packages, or
-FJSVXcbl and FJSVXcbr (x86_64) on your internal yum repository.
+There needs to be NetCOBOL packages on your internal yum repository.
 I cannot and will not redistribute the proprietary RPM files to you.
 
 You can use the yumrepo::corporate recipe to point this recipe at an
 internal yum repository.
+
+### i386 RPM files
+
+* FJSVcbl - COBOL compiler
+* FJSVcbr - COBOL runtime
+
+### x86_64 RPM files
+
+* FJSVXcbl - COBOL compiler
+* FJSVXcbr - COBOL runtime
+* FJSVXrds - Remote Development Service
+* FJSVXcbre - COBOL runtime for Insterstage Job Workload
+* FJSVXcblf - J Adapter to wrap Java classes to be
+              used by COBOL programs.
+* FJSVXcbrf - J Adapter runtime
+* FJSVXmeft - Form feature
+* FJSVXbsrt - Sort, merge, and copy
 
 ## Attributes
 
