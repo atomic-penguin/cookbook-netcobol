@@ -41,6 +41,10 @@ describe 'Netcobol::Attributes::Default' do
       }
     end
 
+    it "sets the netcobol.packages to" do
+      @node[attr_ns]['packages'].must_equal %w{ FJSVXcbl FJSVXcbr }
+    end
+
     it "sets the netcobol.path to" do
       @node[attr_ns]['path'].must_equal "/opt/FJSVcbl64"
     end
@@ -54,6 +58,10 @@ describe 'Netcobol::Attributes::Default' do
           :machine => "i386"
         }
       }
+    end
+
+    it "sets the netcobol.packages to" do
+      @node[attr_ns]['packages'].must_equal %w{ FJSVcbl FJSVcbr }
     end
 
     it "sets the netcobol.path to" do
