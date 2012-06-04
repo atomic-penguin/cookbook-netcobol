@@ -34,12 +34,27 @@ internal yum repository.
 
 * netcobol['packages']
   - List of packages to install. 
-  - Defaults to FJSVcbl and FJSVcbr 
+  - Default depends on architecture
 
-* netcobol['path']
-  - Path for profile script.
-  - Defaults to /opt/FJSVcbl or /opt/FJSVcbl64, depending
-    on architecture
+* netcobol['paths']
+  - Search PATH.
+  - Default depends on architecture
+
+* netcobol['libpaths']
+  - LD Library path
+  - Default depends on architecture
+
+* netcobol['manpaths']
+  - Manpage search path
+  - Default depends on architecture
+
+* netcobol['nlspaths']
+  - Localization path
+  - Default depends on architecture
+
+* netcobol['copypaths']
+  - COBOL Copy libary paths
+  - Default depends on architecture
 
 ## Usage
 
