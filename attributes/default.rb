@@ -17,11 +17,13 @@
 # limitations under the License.
 #
 
-default['netcobol']['packages'] = %w{ FJSVcbl FJSVcbr }
 if node['kernel']['machine'] =~ /^(x|i[3456])86$/i
+  default['netcobol']['packages'] = %w{ FJSVcbl FJSVcbr }
   default['netcobol']['path'] = "/opt/FJSVcbl"
 elsif node['kernel']['machine'] =~ /^(x86_|amd)64$/i
+  default['netcobol']['packages'] = %w{ FJSVXcbl FJSVXcbr }
   default['netcobol']['path'] = "/opt/FJSVcbl64"
 else
+  default['netcobol']['packages'] = %w{ FJSVcbl FJSVcbr }
   default['netcobol']['path'] = "/opt/FJSVcbl"
 end
